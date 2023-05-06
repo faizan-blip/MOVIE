@@ -8,7 +8,7 @@ import Moviecards from './Components/Moviecards';
 
 function App() {
   return (
-    <Router>
+    <Router basename='/MOVIE' >
     <>
     <Switch>
       <Route exact path='/'>

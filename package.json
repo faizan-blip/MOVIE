@@ -2,7 +2,7 @@
   "name": "MOVIE",
   "homepage": "https://faizan-blip.github.io/MOVIE",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",

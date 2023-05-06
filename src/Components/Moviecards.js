@@ -9,7 +9,7 @@ import { Button } from '@mui/material';
 export default function Moviecards() {
   let { id } = useParams();
   const [showDetails, setShowDetails] = useState(null);
- 
+  const [popup , setPopup] = useState(false)
   const[form, setForm ] = useState(false);
   const getdetails = async (id) =>{
     try {
@@ -43,8 +43,12 @@ export default function Moviecards() {
   };
 
   const handleSubmit = (event) => {
+    if(name === '' || email === '' || phone === ''){
+    alert("ERROR OCCURED!!")
+    }
+   else{
     event.preventDefault();
-
+    setForm(false)
     const formData = {
       name: name,
       email: email,
@@ -52,11 +56,22 @@ export default function Moviecards() {
     };
 
     localStorage.setItem('formData', JSON.stringify(formData));
-
+    setPopup(true);
     setName('');
     setEmail('');
     setPhone('');
+   }
   };
+
+  useEffect(() => {
+    if (popup) {
+      const timeoutId = setTimeout(() => {
+        setPopup(false);
+      }, 2000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [popup]);
 
   if (!showDetails) {
     return <div style={{display:"flex" , justifyContent:"center" , height:"100vh" ,  alignItem:"center" , background:"black"}}></div>;
@@ -124,7 +139,7 @@ export default function Moviecards() {
       :"flex-start" , borderRadius:"15px"}}>
       <p style={{color: "white" , textTransform:"none" , fontSize:"20px" , fontWeight:"600"}}>Book Ticket For : {showDetails.name}</p>
         <div >  
-        <form className="login_form" onSubmit={handleSubmit} > 
+        <form onSubmit={handleSubmit} > 
         <Box
       component="form"
       sx={{
@@ -183,8 +198,8 @@ export default function Moviecards() {
   }}  />
        </Box>
        <Box sx={{display:"flex" , gap:"10px" , justifyContent:"center" , alignItems:"center" , marginTop:"0.5em"}}>
-       <Button variant="contained" type='submit' sx={{background:"#c63650"}} className='submitform' >Submit</Button>
-       <Button variant="contained" onClick={close} sx={{background:"white" , color:"black"}}  className='submitform1' >Close</Button>
+       <Button variant="contained" type='submit' sx={{background:"#c63650", fontWeight:"600"}} className='submitform' >Submit</Button>
+       <Button variant="contained" onClick={close} sx={{background:"white" , color:"black", fontWeight:"600"}}  className='submitform1' >Close</Button>
        </Box>
     </form>
            </div>
@@ -192,6 +207,16 @@ export default function Moviecards() {
       </div>
       )
 }
+{popup && (
+
+<div className='overlay1' style={{}} >
+        <div style={{background:" #c63650" , backdropFilter:"blur(16px) saturate(180%)" , width:"auto" ,height:"auto", padding:"1em 1em" , display:"flex", alignItems:"center" , justifyContent
+      :"center"}}>
+        <p style={{color:"white" , fontWeight:"600"}}>Successfully Booked the Ticket!!</p>
+        </div>
+        </div>
+          
+)}
     </div>
     </div>
     </>

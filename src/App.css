@@ -73,6 +73,15 @@
   /* background: rgba(56, 55, 55, 0.5); */
   background: none;
 }
+.overlay1{
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #2d2c2c;
+  height: 30%;
+  width: auto;
+  background: none;
+}
 .submitform:hover{
   background-color: #c63650!important;
 }
