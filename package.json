@@ -1,6 +1,6 @@
 {
-  "homepage": "https://faizan-blip.github.io/Movie_ticket",
-  "name": "movie",
+  "homepage": "http://faizan-blip.github.io/Movie_ticket",
+  "name": "Movie_ticket",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
