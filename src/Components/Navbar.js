@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
-  const { window } = props;
+  const { windos } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 //   const isDesktop = useMediaQuery('(min-width:900px)')
   const handleDrawerToggle = () => {
@@ -32,21 +32,19 @@ function ResponsiveDrawer(props) {
     <div>
           <Divider />
       <List>
-        {['Home'].map((text, index) => (
-           <Link to='/' style={{textDecoration:"none" , color:"white"}}>  <ListItem key={text} disablePadding sx={{color:"white" , fontSize:"20px" }} >
+           <Link to='/' style={{textDecoration:"none" , color:"white"}}>  <ListItem disablePadding sx={{color:"white" , fontSize:"20px" }} >
     <ListItemButton>
               <ListItemIcon>
-                {index === 0 ? <HomeIcon sx={{color:"white" , transform:"Scale(1.5)"}} />: null}
+                <HomeIcon sx={{color:"white" , transform:"Scale(1.5)"}} /> 
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText>Home</ListItemText>
             </ListItemButton>
           </ListItem></Link> 
-        ))}
       </List>
     </div>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container = windos !== undefined ? () => windos().document.body : undefined;
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -117,7 +115,7 @@ ResponsiveDrawer.propTypes = {
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
-  window: PropTypes.func,
+  windos: PropTypes.func,
 };
 
 export default ResponsiveDrawer;
